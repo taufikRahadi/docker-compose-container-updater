@@ -1,8 +1,8 @@
 require('dotenv').config()
 const { exec, execSync } = require('child_process')
 class Container {
-  constructor() {
-    this.image = process.env.IMAGE
+  constructor(image = process.env.IMAGE) {
+    this.image = image
   }
 
   pullLatestImage() {
@@ -78,7 +78,7 @@ class Container {
     }
   }
 
-  pullImage() {
+  updateContainer() {
     try {
       const command = `cd ${process.env.APP_DIR} && docker-compose down && docker-compose up -d`
 
