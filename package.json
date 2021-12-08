@@ -1,0 +1,21 @@
+{
+  "name": "container-updater",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@caporal/core": "2.0.2",
+    "bull": "4.1.1",
+    "dotenv": "10.0.0"
+  },
+  "bin": {
+    "update-my-container": "src/index.js",
+    "is-my-image-is-latest-image-on-earth": "src/index.js"
+  }
+}
