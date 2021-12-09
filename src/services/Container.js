@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { exec, execSync } = require('child_process')
+const { execSync } = require('child_process')
 class Container {
   constructor(image = process.env.IMAGE) {
     this.image = image
