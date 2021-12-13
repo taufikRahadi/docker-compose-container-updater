@@ -4,38 +4,25 @@ const { program } = require('@caporal/core')
 const Container = require('./services/Container')
 
 program
-  .version('1.0.0')
-  .command('is-my-image-is-latest-image-on-earth')
-  .option('-i', '--image-name <imageName>')
-  .action(({ logger, options }) => {
-    const container = new Container(options.imageName)
-
-    container.pullLatestImage()
-    logger.info(
-      `so is your image is latest image on earth ? ${container.isMyImageIsLatestImageOnEarth()}`,
-    )
-  })
-
-program
-  .version('1.0.0')
-  .command('pull-latest-image')
-  .option('-i', '--image-name <imageName>')
-  .action(({ logger, options }) => {
-    const container = new Container(options.imageName)
-
-    logger.info(`sek, lagi di pull`)
+  .version('1.1.0')
+  .command('pull')
+  .argument('<image>', 'image name with tag')
+  .action(({ logger, args: { image } }) => {
+    const container = new Container(image)
     logger.info(container.pullLatestImage())
   })
 
 program
-  .version('1.0.0')
-  .command('update-my-container', 'just update my container')
-  .option('-i', '--image-name <imageName>')
-  .action(({ logger, options }) => {
-    const container = new Container(options.imageName)
-    logger.info(`w8, lagi pull trus nge up`)
-    container.updateContainer()
-    logger.info(`beres cuy`)
+  .version('1.1.0')
+  .command('update', 'just update my container')
+  .argument('<image>', 'image name with tag')
+  .argument(
+    '<docker-compose-directory>',
+    'directory of docker-compose.yml file',
+  )
+  .action(({ logger, args: { image, dockerComposeDirectory } }) => {
+    const container = new Container(image)
+    logger.info(container.updateContainer(dockerComposeDirectory))
   })
 
 program.run()
