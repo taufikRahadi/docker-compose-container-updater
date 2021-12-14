@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Taufik Rahadi",
   "license": "ISC",
   "dependencies": {
     "@caporal/core": "2.0.2",
